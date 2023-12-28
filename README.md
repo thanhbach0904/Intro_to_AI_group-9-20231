@@ -6,6 +6,7 @@ AI CHESS USING SEARCH ALGORITHMS
 
 chess_piece : is a python package contains the images of chess pieces.
 images : contains png image of button
+
 main.py : the main file we will work with, contains code for the interface and get the user mouse/keyboard inputs. 
 
 
