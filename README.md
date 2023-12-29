@@ -44,7 +44,7 @@ After doing all these things you can try to play it yourself.
 ## git clone https://github.com/thanhbach0904/Intro_to_AI_group-9-20231
 
 ```python
-install -q -r requirements.txt
+pip install -q -r requirements.txt
 ```
 
 ## pip install -q -r requirements.txt
