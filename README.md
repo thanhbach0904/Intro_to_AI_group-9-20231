@@ -45,4 +45,4 @@ After doing all these things you can try to play it yourself.
 
 ## python main.py
 
-## pip install -q -r pygame==2.5.2
+## pip install -q -r requirements.txt
