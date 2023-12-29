@@ -41,13 +41,17 @@ After import other files, you can run the main.py file to play Chess. In order t
 You can choose the depth of the minimax algorithms from 1 to 6, with higher depth our AI takes very long time to return a move so we don't recommend you to do that (at depth = 6 the AI takes over 30 minutes to make a move at the mid game state)
 After doing all these things you can try to play it yourself.
 
-## git clone https://github.com/thanhbach0904/Intro_to_AI_group-9-20231
+```python
+ git clone https://github.com/thanhbach0904/Intro_to_AI_group-9-20231
+```
 
 ```python
 pip install -q -r requirements.txt
 ```
 
-## pip install -q -r requirements.txt
+```python
+python main.py
+```
 
 
 
