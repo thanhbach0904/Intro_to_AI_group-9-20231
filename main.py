@@ -11,7 +11,7 @@ button = {}
 def LoadImages():
     
     pieces = ["bp","bB",'bK','bQ','bR','bN','wp','wB','wK','wQ','wR','wN']
-    buttonList = ['Play','Choose Algorithm','Quit','button1']
+    buttonList = ['Play','Choose Algorithm','Quit','button1','button2','button3']
     for piece in pieces:
         images[piece] = p.transform.scale(p.image.load("chess_piece/" + piece +'.png'),(sq_size,sq_size))
     
@@ -141,21 +141,27 @@ def main():
             if i.type == p.MOUSEBUTTONDOWN:
                 
                 x, y = i.pos
-                if button['Play'].get_rect(center=(4*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+                if button['Play'].get_rect(center=(3*sq_size,float(2.5*sq_size))).collidepoint(x, y):
                     complete = True
                     AI_move.maxdepth = 1
                 
-                elif button['Choose Algorithm'].get_rect(center=(4*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+                elif button['Choose Algorithm'].get_rect(center=(3*sq_size,float(4.5*sq_size))).collidepoint(x, y):
                     complete = True
                     AI_move.maxdepth = 2
                     
                     
-                elif button['Quit'].get_rect(center=(7*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+                elif button['Quit'].get_rect(center=(6*sq_size,float(2.5*sq_size))).collidepoint(x, y):
                     complete = True
                     AI_move.maxdepth = 3
-                elif button['button1'].get_rect(center=(7*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+                elif button['button1'].get_rect(center=(6*sq_size,float(4.5*sq_size))).collidepoint(x, y):
                     complete = True
                     AI_move.maxdepth = 4
+                elif button['button2'].get_rect(center=(9*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+                    complete = True
+                    AI_move.maxdepth = 5
+                elif button['button3'].get_rect(center=(9*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+                    complete = True
+                    AI_move.maxdepth = 6
         if complete:
             break
     
@@ -534,39 +540,51 @@ def displayStart(screen):
     p.display.flip()
     
 def chooseDepth(screen):
-    color,color1,color2,color3 = 'white','white','white','white'
+    color,color1,color2,color3,color4,color5 = 'white','white','white','white','white','white'
     screen.fill('brown')
-    screen.blit(p.transform.scale(button['Play'],(2*sq_size,sq_size)),(3*sq_size,2*sq_size))
+    screen.blit(p.transform.scale(button['Play'],(2*sq_size,sq_size)),(2*sq_size,2*sq_size))
     button['Play'] = p.transform.scale(button['Play'],(2*sq_size,sq_size))
-    screen.blit(p.transform.scale(button['Choose Algorithm'],(2*sq_size,sq_size)),(3*sq_size,4*sq_size))
+    screen.blit(p.transform.scale(button['Choose Algorithm'],(2*sq_size,sq_size)),(2*sq_size,4*sq_size))
     button['Choose Algorithm'] = p.transform.scale(button['Choose Algorithm'],(2*sq_size,sq_size))
-    screen.blit(p.transform.scale(button['Quit'],(2*sq_size,sq_size)),(6*sq_size,2*sq_size))
+    screen.blit(p.transform.scale(button['Quit'],(2*sq_size,sq_size)),(5*sq_size,2*sq_size))
     button['Quit'] = p.transform.scale(button['Quit'],(2*sq_size,sq_size))
-    screen.blit(p.transform.scale(button['button1'],(2*sq_size,sq_size)),(6*sq_size,4*sq_size))
+    screen.blit(p.transform.scale(button['button1'],(2*sq_size,sq_size)),(5*sq_size,4*sq_size))
     button['button1'] = p.transform.scale(button['button1'],(2*sq_size,sq_size))
+    screen.blit(p.transform.scale(button['button2'],(2*sq_size,sq_size)),(8*sq_size,2*sq_size))
+    button['button2'] = p.transform.scale(button['button2'],(2*sq_size,sq_size))
+    screen.blit(p.transform.scale(button['button3'],(2*sq_size,sq_size)),(8*sq_size,4*sq_size))
+    button['button3'] = p.transform.scale(button['button3'],(2*sq_size,sq_size))
     bigfont = p.font.SysFont(None, int(0.75*sq_size))
     welcome = bigfont.render('Choose depth', True, 'white')
     mouse_pos = p.mouse.get_pos()
     x, y = mouse_pos[0],mouse_pos[1]
-    if button['Play'].get_rect(center=(4*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+    if button['Play'].get_rect(center=(3*sq_size,float(2.5*sq_size))).collidepoint(x, y):
         color = 'Blue'
-    elif button['Choose Algorithm'].get_rect(center=(4*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+    elif button['Choose Algorithm'].get_rect(center=(3*sq_size,float(4.5*sq_size))).collidepoint(x, y):
         color1 = 'blue'
-    elif button['Quit'].get_rect(center=(7*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+    elif button['Quit'].get_rect(center=(6*sq_size,float(2.5*sq_size))).collidepoint(x, y):
         color2 = 'blue'
-    elif button['button1'].get_rect(center=(7*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+    elif button['button1'].get_rect(center=(6*sq_size,float(4.5*sq_size))).collidepoint(x, y):
         color3 = 'blue'
+    elif button['button2'].get_rect(center=(9*sq_size,float(2.5*sq_size))).collidepoint(x, y):
+        color4 = 'blue'
+    elif button['button3'].get_rect(center=(9*sq_size,float(4.5*sq_size))).collidepoint(x, y):
+        color5 = 'blue'
     
      
     text = bigfont.render('1', True, color)
     text1 = bigfont.render('2', True, color1)
     text2 = bigfont.render('3', True, color2)
     text3 = bigfont.render('4', True, color3)
+    text4 = bigfont.render('5', True, color4)
+    text5 = bigfont.render('6', True, color5)
     screen.blit(welcome,(3.6*sq_size,0.5*sq_size))
-    screen.blit(text,(3.7*sq_size,2.2*sq_size))
-    screen.blit(text1,(3.7*sq_size,4.2*sq_size))
-    screen.blit(text2,(6.7*sq_size,2.2*sq_size))
-    screen.blit(text3,(6.7*sq_size,4.2*sq_size))
+    screen.blit(text,(2.7*sq_size,2.2*sq_size))
+    screen.blit(text1,(2.7*sq_size,4.2*sq_size))
+    screen.blit(text2,(5.7*sq_size,2.2*sq_size))
+    screen.blit(text3,(5.7*sq_size,4.2*sq_size))
+    screen.blit(text4,(8.7*sq_size,2.2*sq_size))
+    screen.blit(text5,(8.7*sq_size,4.2*sq_size))
     p.display.flip()
 def displayIsThinking(screen):
     bigfont = p.font.SysFont(None, 32)
