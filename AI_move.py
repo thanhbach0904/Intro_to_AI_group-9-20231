@@ -478,4 +478,6 @@ def getBestMove(gs, ValidMove):
 
     
     
-    
+    count=0
+
+    return nextmove
